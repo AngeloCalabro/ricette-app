@@ -1,0 +1,105 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 600px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.servings {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+input, select {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.ingredient {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.calculate {
+    background-color: #ff7b54;
+    color: white;
+}
+
+button:not(.calculate) {
+    background-color: #ffd56b;
+}
+
+.result-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #eee;
+}
+
+.result-section h2 {
+    margin-bottom: 5px;
+}
+
+.result-section h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: normal;
+    color: #555;
+}
+
+.result-section ul {
+    padding-left: 20px;
+}
+
+.result-section li {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #2d6a4f;
+}
+
+/* STAMPA SOLO RISULTATO */
+@media print {
+    .no-print {
+        display: none;
+    }
+
+    body {
+        background: white;
+    }
+
+    .container {
+        box-shadow: none;
+    }
+}

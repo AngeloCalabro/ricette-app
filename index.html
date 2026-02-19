@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolatore Proporzioni Ricette</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff7b54">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🍝 Calcolatore Proporzioni Ricette</h1>
+
+        <div class="field no-print">
+            <label>Nome della Ricetta:</label>
+            <input type="text" id="recipeTitle" placeholder="Es: Lasagne della Nonna">
+        </div>
+
+        <div class="servings no-print">
+            <div>
+                <label>Persone originali:</label>
+                <input type="number" id="originalServings" min="1" value="4">
+            </div>
+            <div>
+                <label>Nuove persone:</label>
+                <input type="number" id="newServings" min="1" value="4">
+            </div>
+        </div>
+
+        <h2 class="no-print">Ingredienti</h2>
+
+        <div id="ingredientsList" class="no-print"></div>
+
+        <button class="no-print" onclick="addIngredient()">➕ Aggiungi Ingrediente</button>
+        <button class="calculate no-print" onclick="calculate()">Calcola Proporzioni</button>
+
+        <!-- RISULTATO -->
+        <div id="resultSection" class="result-section" style="display:none;">
+            <h2 id="resultTitle"></h2>
+            <h3 id="resultServings"></h3>
+            <ul id="resultList"></ul>
+            <button onclick="printResult()">🖨 Stampa Risultato</button>
+            <button onclick="goBack()">⬅ Torna indietro</button>
+            <button onclick="resetAll()">♻️ Reset tutto</button>
+        </div>
+
+
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("service-worker.js")
+                .then(() => console.log("Service Worker registrato"));
+        }
+    </script>
+</body>
+
+</html>
