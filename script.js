@@ -16,9 +16,16 @@ function addIngredient() {
             <option value="cucchiaini">cucchiaini</option>
             <option value="pz">pezzi</option>
         </select>
+        <button onclick="deleteIngredient(this)">❌</button>
     `;
 
     container.appendChild(div);
+}
+
+// Cancella un singolo ingrediente
+function deleteIngredient(button) {
+    const div = button.parentElement;
+    div.remove();
 }
 
 function calculate() {
@@ -50,16 +57,12 @@ function calculate() {
         if (name && quantity) {
             let newQuantity = quantity * ratio;
 
-            if (unit === "kg" || unit === "L") {
-                newQuantity = newQuantity.toFixed(2);
-            } else if (unit === "pz") {
-                newQuantity = Math.round(newQuantity);
-            } else {
-                newQuantity = newQuantity.toFixed(1);
-            }
+            if (unit === "kg" || unit === "L") newQuantity = newQuantity.toFixed(2);
+            else if (unit === "pz") newQuantity = Math.round(newQuantity);
+            else newQuantity = newQuantity.toFixed(1);
 
             const li = document.createElement("li");
-            li.textContent = newQuantity + " " + unit + " di " + name;
+            li.textContent = `${newQuantity} ${unit} di ${name}`;
             resultList.appendChild(li);
         }
     });
@@ -73,13 +76,13 @@ function printResult() {
     window.print();
 }
 
-// Nasconde il risultato ma mantiene i dati
+// Torna indietro mantenendo dati
 function goBack() {
     document.getElementById("resultSection").style.display = "none";
     document.getElementById("resultList").innerHTML = "";
 }
 
-// Reset completo di tutto
+// Reset completo
 function resetAll() {
     document.getElementById("resultSection").style.display = "none";
     document.getElementById("resultList").innerHTML = "";

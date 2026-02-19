@@ -103,3 +103,16 @@ button:not(.calculate) {
         box-shadow: none;
     }
 }
+
+.ingredient button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 5px 8px;
+    cursor: pointer;
+}
+
+.ingredient button:hover {
+    opacity: 0.8;
+}
