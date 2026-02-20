@@ -1,95 +1,256 @@
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #ffecd2, #fcb69f);
-    display: flex;
-    justify-content: center;
-    padding: 40px;
+/* =========================
+   VARIABILI TEMA
+========================= */
+
+:root {
+    --bg: #f2f2f7;
+    --card: #ffffff;
+    --text: #1c1c1e;
+    --secondary: #6e6e73;
+    --primary: #ff7b54;
+    --border: #e5e5ea;
+    --danger: #ff3b30;
 }
 
-.container {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    width: 600px;
+/* 🌙 Dark mode automatico */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #000000;
+        --card: #1c1c1e;
+        --text: #ffffff;
+        --secondary: #a1a1a6;
+        --primary: #ff7b54;
+        --border: #2c2c2e;
+        --danger: #ff453a;
+    }
 }
+
+/* =========================
+   BASE
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* =========================
+   CONTENITORE APP
+========================= */
+
+.container {
+    width: 100%;
+    max-width: 700px;
+    background: var(--card);
+    border-radius: 28px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+}
+
+/* =========================
+   TITOLI
+========================= */
 
 h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    font-size: 22px;
+    font-weight: 600;
 }
 
-.servings {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+h2 {
+    margin: 30px 0 15px 0;
+    font-size: 16px;
+    color: var(--secondary);
+}
+
+/* =========================
+   INPUT MODERNI
+========================= */
+
+label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--secondary);
 }
 
 input, select {
-    padding: 8px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    margin-top: 5px;
     width: 100%;
+    padding: 12px 14px;
+    margin-top: 6px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    font-size: 14px;
+    transition: 0.2s;
 }
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(255,123,84,0.2);
+}
+
+/* =========================
+   SEZIONE PERSONE
+========================= */
+
+.servings {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.servings div {
+    flex: 1;
+}
+
+/* =========================
+   INGREDIENTI CARD STYLE
+========================= */
 
 .ingredient {
     display: flex;
     gap: 10px;
-    margin-bottom: 10px;
     align-items: center;
+    background: var(--bg);
+    padding: 12px;
+    border-radius: 18px;
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
 }
 
-button {
-    margin-top: 15px;
-    padding: 10px 15px;
+.ingredient input[type="text"] {
+    flex: 2;
+}
+
+.ingredient input[type="number"] {
+    width: 90px;
+}
+
+.ingredient select {
+    width: 110px;
+}
+
+/* Pulsante elimina */
+.ingredient button {
+    background: var(--danger);
+    color: white;
     border: none;
     border-radius: 10px;
+    padding: 6px 9px;
     cursor: pointer;
-    font-weight: bold;
+    transition: 0.2s;
 }
 
-button:hover {
-    opacity: 0.9;
+.ingredient button:active {
+    transform: scale(0.95);
+}
+
+/* =========================
+   BOTTONI APP STYLE
+========================= */
+
+button {
+    padding: 12px 18px;
+    border-radius: 18px;
+    border: none;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+button:active {
+    transform: scale(0.97);
 }
 
 .calculate {
-    background-color: #ff7b54;
+    background: var(--primary);
     color: white;
 }
 
-button:not(.calculate) {
-    background-color: #ffd56b;
+button:not(.calculate):not(.ingredient button) {
+    background: var(--border);
+    color: var(--text);
 }
 
+/* =========================
+   RISULTATO
+========================= */
+
 .result-section {
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 2px solid #eee;
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 1px solid var(--border);
 }
 
 .result-section h2 {
-    margin-bottom: 5px;
+    font-size: 20px;
+    color: var(--text);
 }
 
 .result-section h3 {
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-weight: normal;
-    color: #555;
-}
-
-.result-section ul {
-    padding-left: 20px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: var(--secondary);
 }
 
 .result-section li {
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #2d6a4f;
+    margin-bottom: 10px;
+    font-weight: 500;
 }
 
-/* STAMPA SOLO RISULTATO */
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+    .container {
+        border-radius: 0;
+        padding: 20px;
+        box-shadow: none;
+    }
+
+    .servings {
+        flex-direction: column;
+    }
+
+    .ingredient {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .ingredient input[type="number"],
+    .ingredient select {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+/* =========================
+   STAMPA
+========================= */
+
 @media print {
     .no-print {
         display: none;
@@ -97,22 +258,11 @@ button:not(.calculate) {
 
     body {
         background: white;
+        color: black;
     }
 
     .container {
         box-shadow: none;
+        border-radius: 0;
     }
-}
-
-.ingredient button {
-    background-color: #ff6b6b;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 5px 8px;
-    cursor: pointer;
-}
-
-.ingredient button:hover {
-    opacity: 0.8;
 }
